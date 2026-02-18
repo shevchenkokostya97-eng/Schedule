@@ -1,0 +1,137 @@
+import React from 'react';
+import { 
+  Coffee, 
+  Utensils, 
+  Users, 
+  Play, 
+  Sun, 
+  Moon, 
+  BookOpen, 
+  MessageCircle, 
+  Gamepad2, 
+  Clock, 
+  Sparkles,
+  MapPin,
+  Bike
+} from 'lucide-react';
+
+const App = () => {
+  const scheduleData = [
+    {
+      day: "П'ятниця",
+      color: "bg-blue-50",
+      borderColor: "border-blue-200",
+      accent: "text-blue-600",
+      events: [
+        { time: "12:00", activity: "Приїзд, поселення", type: "logistics", icon: <MapPin size={18} /> },
+        { time: "13:00 - 14:00", activity: "Обід", type: "food", icon: <Utensils size={18} /> },
+        { time: "14:00 - 15:00", activity: "Відкриття проєкту", type: "official", icon: <Play size={18} /> },
+        { time: "15:00 - 16:30", activity: "Спільний спорт", type: "sport", icon: <Bike size={18} /> },
+        { time: "16:30 - 17:00", activity: "Кавобрейк", type: "break", icon: <Coffee size={18} /> },
+        { time: "17:00 - 18:00", activity: "Вільний час", type: "leisure", icon: <Sun size={18} /> },
+        { time: "18:00 - 19:00", activity: "Вечеря", type: "food", icon: <Utensils size={18} /> },
+        { time: "19:00 - 20:00", activity: "Спікер (частина 1)", type: "session", icon: <BookOpen size={18} /> },
+        { time: "20:00 - 20:30", activity: "Обговорення", type: "session", icon: <MessageCircle size={18} /> },
+        { time: "21:00 - 23:00", activity: "Сауна / Вільний час", type: "leisure", icon: <Moon size={18} /> },
+      ]
+    },
+    {
+      day: "Субота",
+      color: "bg-purple-50",
+      borderColor: "border-purple-200",
+      accent: "text-purple-600",
+      events: [
+        { time: "08:30 - 09:00", activity: "Спільна молитва", type: "official", icon: <Sparkles size={18} /> },
+        { time: "09:00 - 10:00", activity: "Сніданок", type: "food", icon: <Utensils size={18} /> },
+        { time: "10:00 - 11:00", activity: "Спікер (частина 2)", type: "session", icon: <BookOpen size={18} /> },
+        { time: "11:00 - 11:30", activity: "Обговорення", type: "session", icon: <MessageCircle size={18} /> },
+        { time: "11:30 - 12:00", activity: "Кавобрейк", type: "break", icon: <Coffee size={18} /> },
+        { time: "12:00 - 13:00", activity: "Робоча група 1", type: "group", icon: <Users size={18} /> },
+        { time: "13:00 - 14:00", activity: "Обід", type: "food", icon: <Utensils size={18} /> },
+        { time: "14:00 - 16:00", activity: "Вільний час / Спорт / Сауна", type: "leisure", icon: <Sun size={18} /> },
+        { time: "16:00 - 16:30", activity: "Кавобрейк", type: "break", icon: <Coffee size={18} /> },
+        { time: "16:30 - 17:30", activity: "Робоча група 2", type: "group", icon: <Users size={18} /> },
+        { time: "17:30 - 18:00", activity: "Презентація ідей", type: "official", icon: <Play size={18} /> },
+        { time: "18:00 - 19:00", activity: "Вечеря", type: "food", icon: <Utensils size={18} /> },
+        { time: "19:00 - 21:00", activity: "Ток-шоу", type: "official", icon: <Gamepad2 size={18} /> },
+        { time: "21:00 - 23:00", activity: "Сауна / Вільний час", type: "leisure", icon: <Moon size={18} /> },
+      ]
+    },
+    {
+      day: "Неділя",
+      color: "bg-emerald-50",
+      borderColor: "border-emerald-200",
+      accent: "text-emerald-600",
+      events: [
+        { time: "08:30 - 09:00", activity: "Спільна молитва", type: "official", icon: <Sparkles size={18} /> },
+        { time: "09:00 - 10:00", activity: "Сніданок", type: "food", icon: <Utensils size={18} /> },
+        { time: "10:00 - 11:00", activity: "Спікер (частина 3)", type: "session", icon: <BookOpen size={18} /> },
+        { time: "11:00 - 12:00", activity: "Робоча група 3", type: "group", icon: <Users size={18} /> },
+        { time: "12:00 - 13:00", activity: "Завершення проєкту", type: "official", icon: <Play size={18} /> },
+        { time: "13:00 - 14:00", activity: "Обід", type: "food", icon: <Utensils size={18} /> },
+        { time: "14:00", activity: "Виселення і додому", type: "logistics", icon: <MapPin size={18} /> },
+      ]
+    }
+  ];
+
+  const getTypeStyle = (type) => {
+    switch (type) {
+      case 'food': return 'bg-orange-100 text-orange-700 border-orange-200';
+      case 'break': return 'bg-amber-100 text-amber-700 border-amber-200';
+      case 'session': return 'bg-blue-100 text-blue-700 border-blue-200';
+      case 'group': return 'bg-indigo-100 text-indigo-700 border-indigo-200';
+      case 'official': return 'bg-rose-100 text-rose-700 border-rose-200';
+      case 'leisure': return 'bg-slate-100 text-slate-700 border-slate-200';
+      case 'sport': return 'bg-emerald-100 text-emerald-700 border-emerald-200';
+      default: return 'bg-gray-100 text-gray-700 border-gray-200';
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-slate-50 p-4 md:p-8 font-sans">
+      <div className="max-w-6xl mx-auto">
+        <header className="mb-10 text-center">
+          <h1 className="text-4xl font-extrabold text-slate-900 mb-2">Програма Проєкту</h1>
+          <p className="text-slate-500 uppercase tracking-widest font-semibold">Триденний інтенсив</p>
+        </header>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {scheduleData.map((dayData, dayIdx) => (
+            <div key={dayIdx} className={`rounded-3xl border-2 ${dayData.borderColor} ${dayData.color} overflow-hidden shadow-sm`}>
+              <div className="p-6 border-b border-inherit">
+                <h2 className={`text-2xl font-bold ${dayData.accent}`}>{dayData.day}</h2>
+              </div>
+              
+              <div className="p-4 space-y-3">
+                {dayData.events.map((event, eventIdx) => (
+                  <div 
+                    key={eventIdx} 
+                    className="flex items-center gap-4 bg-white p-3 rounded-2xl shadow-sm border border-slate-100 transition-transform hover:scale-[1.02]"
+                  >
+                    <div className={`p-2 rounded-xl shrink-0 ${getTypeStyle(event.type)}`}>
+                      {event.icon}
+                    </div>
+                    <div className="flex flex-col min-w-0">
+                      <span className="text-xs font-bold text-slate-400 flex items-center gap-1 uppercase">
+                        <Clock size={12} /> {event.time}
+                      </span>
+                      <span className="text-sm font-semibold text-slate-800 truncate leading-tight">
+                        {event.activity}
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+        
+        <footer className="mt-12 text-center text-slate-400 text-sm italic">
+          *Бажаємо приємного та продуктивного часу!
+        </footer>
+      </div>
+    </div>
+  );
+};
+
+export default App;
